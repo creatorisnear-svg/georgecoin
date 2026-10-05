@@ -1,5 +1,11 @@
 {
-  "launches": [],
+  "launches": [
+    {
+      "date": "2026-10-05",
+      "ticker": "STACK",
+      "contract": "qAgYCqbqgsmpG3Dxu9CHrqHc7FApViLHDsRU4ec7d4V"
+    }
+  ],
   "links": {
     "x": "",
     "telegram": ""
