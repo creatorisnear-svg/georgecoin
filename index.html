@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georgecoin.fun · Sunday is pancake day</title>
+<meta name="description" content="A curious little monkey, a hot griddle, and a plate that never gets full. A new coin every day, and every buy drops another pancake on George's plate.">
+<meta property="og:title" content="Georgecoin.fun · Sunday is pancake day">
+<meta property="og:description" content="A new coin every day, and every buy drops another pancake on George's plate. Stack up before Monday.">
+<meta property="og:image" content="https://georgecoin.fun/img/og.png">
+<meta property="og:url" content="https://georgecoin.fun/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://georgecoin.fun/img/og.png">
+<meta name="theme-color" content="#F8EEDC">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="sunday-bar" id="sundayBar" hidden>
+  <p>It's Sunday. Pancake day is on. Every buy gets extra syrup.</p>
+</div>
+
+<header class="top">
+  <a class="wordmark" href="#top" aria-label="Back to top">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mini-stack"/></svg>
+    <span data-site>Georgecoin.fun</span>
+  </a>
+  <nav>
+    <a href="#story">Story</a>
+    <a href="#kitchen">Kitchen</a>
+    <a class="btn btn-small" href="#order">Buy <span data-ticker>$STACK</span></a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="dayline" id="dayline">Sunday is pancake day.</p>
+    <h1>Every buy is a pancake.</h1>
+    <p class="lead"><span data-name>George</span> is a curious little monkey who lives for Sunday, because Sunday is pancake day. There's a new coin every day, and every time someone buys today's coin, <span data-ticker>$STACK</span>, a fresh pancake drops onto his plate. He hasn't said stop yet.</p>
+
+    <div class="count">
+      <span class="count-num" id="countNum">0</span>
+      <span class="count-label">pancakes on <span data-name>George</span>'s plate<br><small id="countNote">one for every buy in the last 24 hours</small></span>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="#order">Feed <span data-name>George</span></a>
+      <button class="btn btn-quiet" id="copyCa" type="button">Copy contract</button>
+      <button class="btn btn-quiet" id="soundBtn" type="button" aria-pressed="false">Sound off</button>
+    </div>
+
+    <dl class="receipt" id="receipt">
+      <div><dt>Market cap</dt><dd id="statMcap">at launch</dd></div>
+      <div><dt>24h volume</dt><dd id="statVol">at launch</dd></div>
+      <div><dt>Buys / sells today</dt><dd id="statTx">at launch</dd></div>
+    </dl>
+  </div>
+
+  <figure class="plate-frame">
+    <div class="scene-wrap">
+      <svg id="scene" viewBox="0 0 600 800" preserveAspectRatio="xMidYMax meet" role="img" aria-label="A cartoon monkey in a chef's hat at a kitchen table, waiting with a knife and fork while pancakes stack up on his plate">
+        <defs>
+          <pattern id="wallpaper" width="48" height="48" patternUnits="userSpaceOnUse">
+            <rect width="48" height="48" fill="#F5E4C6"/>
+            <path d="M24 8 l5 8 -5 8 -5 -8z" fill="#EBD2A9"/>
+            <circle cx="0" cy="36" r="2.4" fill="#E6C99B"/>
+            <circle cx="48" cy="36" r="2.4" fill="#E6C99B"/>
+          </pattern>
+          <pattern id="gingham" width="34" height="34" patternUnits="userSpaceOnUse">
+            <rect width="34" height="34" fill="#FFF4E2"/>
+            <rect width="17" height="34" fill="#C8432B" opacity=".5"/>
+            <rect width="34" height="17" fill="#C8432B" opacity=".5"/>
+          </pattern>
+          <pattern id="ginghamSoft" width="34" height="34" patternUnits="userSpaceOnUse" patternTransform="scale(1 .55)">
+            <rect width="34" height="34" fill="#FFF4E2"/>
+            <rect width="17" height="34" fill="#C8432B" opacity=".22"/>
+            <rect width="34" height="17" fill="#C8432B" opacity=".22"/>
+          </pattern>
+          <symbol id="mini-stack" viewBox="0 0 40 40">
+            <ellipse cx="20" cy="33" rx="17" ry="4.5" fill="#FFFBF2" stroke="#2E1B0E" stroke-width="2"/>
+            <path d="M6 27v4a14 3.6 0 0 0 28 0v-4" fill="#C9782D" stroke="#2E1B0E" stroke-width="2"/>
+            <ellipse cx="20" cy="27" rx="14" ry="3.6" fill="#EBA94D" stroke="#2E1B0E" stroke-width="2"/>
+            <path d="M7 20v4a13 3.4 0 0 0 26 0v-4" fill="#C9782D" stroke="#2E1B0E" stroke-width="2"/>
+            <ellipse cx="20" cy="20" rx="13" ry="3.4" fill="#EBA94D" stroke="#2E1B0E" stroke-width="2"/>
+            <path d="M8 13v4a12 3.2 0 0 0 24 0v-4" fill="#C9782D" stroke="#2E1B0E" stroke-width="2"/>
+            <ellipse cx="20" cy="13" rx="12" ry="3.2" fill="#F2BC5E" stroke="#2E1B0E" stroke-width="2"/>
+            <path d="M16 11.5l4-2.4 5 1.4-4 2.4z" fill="#FBE39A" stroke="#2E1B0E" stroke-width="1.4"/>
+          </symbol>
+        </defs>
+
+        <!-- the room: wall, sky above the ceiling, things that show when the camera pulls back -->
+        <g id="room">
+          <rect x="-3000" y="-6000" width="6600" height="6800" fill="url(#wallpaper)"/>
+          <g id="sky">
+            <rect x="-3000" y="-6000" width="6600" height="5240" fill="#FBDDB4"/>
+            <circle cx="860" cy="-1080" r="70" fill="#F6C24E" stroke="#2E1B0E" stroke-width="5"/>
+            <g fill="#FFF7EA" stroke="#2E1B0E" stroke-width="5">
+              <path d="M-260 -980a40 40 0 0 1 70-30a50 50 0 0 1 90 10a34 34 0 0 1 20 60h-170a34 34 0 0 1-10-40z"/>
+              <path d="M560 -1220a34 34 0 0 1 60-26a44 44 0 0 1 80 8a30 30 0 0 1 16 52h-150a30 30 0 0 1-6-34z"/>
+              <path d="M140 -900a26 26 0 0 1 46-20a34 34 0 0 1 60 6a22 22 0 0 1 12 40h-112a22 22 0 0 1-6-26z"/>
+            </g>
+          </g>
+          <g id="beamWhole">
+            <rect x="-3000" y="-760" width="6600" height="52" fill="#7A4A2A" stroke="#2E1B0E" stroke-width="5"/>
+            <path d="M-3000 -730H3600" stroke="#5E3720" stroke-width="3"/>
+          </g>
+          <g id="beamBroken" hidden>
+            <path d="M-3000 -760H292l14 12-10 10 16 9-12 9 8 12H-3000z" fill="#7A4A2A" stroke="#2E1B0E" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M3600 -760H520l-12 10 14 10-16 10 10 8-8 14H3600z" fill="#7A4A2A" stroke="#2E1B0E" stroke-width="5" stroke-linejoin="round"/>
+            <g fill="#7A4A2A" stroke="#2E1B0E" stroke-width="4" stroke-linejoin="round">
+              <path d="M268 -690l16 4-6 14-14-6z"/>
+              <path d="M540 -680l14-2 2 14-14 2z"/>
+              <path d="M250 -630l10 2-3 10-10-3z"/>
+              <path d="M560 -610l9 3-3 9-9-3z"/>
+            </g>
+          </g>
+          <rect x="-3000" y="760" width="6600" height="40" fill="#A8683A" stroke="#2E1B0E" stroke-width="4"/>
+
+          <!-- tear-off calendar -->
+          <g id="calendar">
+            <path d="M90 34L60 64M90 34l30 30" stroke="#2E1B0E" stroke-width="2.5" fill="none"/>
+            <circle cx="90" cy="34" r="5" fill="#2E1B0E"/>
+            <rect x="38" y="62" width="104" height="128" rx="5" fill="#FFF8EA" stroke="#2E1B0E" stroke-width="4"/>
+            <path d="M38 67a5 5 0 0 1 5-5h94a5 5 0 0 1 5 5v21H38z" fill="#C8432B" stroke="#2E1B0E" stroke-width="4"/>
+            <text id="calDay" x="90" y="82" text-anchor="middle" class="cal-day">SUNDAY</text>
+            <text id="calDate" x="90" y="150" text-anchor="middle" class="cal-date">5</text>
+            <ellipse id="calRing" cx="90" cy="135" rx="34" ry="28" fill="none" stroke="#C8432B" stroke-width="4" transform="rotate(-8 90 135)" hidden/>
+            <text id="calNote" x="90" y="180" text-anchor="middle" class="cal-note">days to Sunday</text>
+          </g>
+
+          <!-- griddle on a hook -->
+          <g id="pan">
+            <circle cx="548" cy="44" r="6" fill="none" stroke="#2E1B0E" stroke-width="4"/>
+            <path d="M548 50v58" stroke="#2E1B0E" stroke-width="13" stroke-linecap="round"/>
+            <path d="M548 50v58" stroke="#6B3E22" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="548" cy="160" r="50" fill="#3A2616" stroke="#2E1B0E" stroke-width="5"/>
+            <circle cx="548" cy="160" r="38" fill="#4D331F"/>
+            <path d="M524 146a28 20 0 0 1 30-8" stroke="#6B4A30" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- far wall: only seen when the stack gets tall -->
+          <g id="farLeft">
+            <rect x="-470" y="150" width="230" height="290" rx="6" fill="#FFF4E2" stroke="#2E1B0E" stroke-width="6"/>
+            <rect x="-450" y="170" width="190" height="250" fill="#F7D9A8"/>
+            <circle cx="-355" cy="290" r="62" fill="#FFFBF2" stroke="#2E1B0E" stroke-width="5"/>
+            <ellipse cx="-355" cy="296" rx="44" ry="9" fill="#C9782D" stroke="#2E1B0E" stroke-width="4"/>
+            <ellipse cx="-355" cy="284" rx="40" ry="9" fill="#EBA94D" stroke="#2E1B0E" stroke-width="4"/>
+            <ellipse cx="-355" cy="272" rx="36" ry="8" fill="#F2BC5E" stroke="#2E1B0E" stroke-width="4"/>
+          </g>
+          <g id="farRight">
+            <rect x="700" y="90" width="230" height="320" fill="#FBE7C6" stroke="#2E1B0E" stroke-width="7"/>
+            <path d="M815 90v320M700 250h230" stroke="#2E1B0E" stroke-width="6"/>
+            <path d="M690 80h250" stroke="#2E1B0E" stroke-width="8" stroke-linecap="round"/>
+            <path d="M694 84c30 120 10 220 40 330h-40z" fill="#C8432B" stroke="#2E1B0E" stroke-width="5" stroke-linejoin="round"/>
+            <path d="M936 84c-30 120-10 220-40 330h40z" fill="#C8432B" stroke="#2E1B0E" stroke-width="5" stroke-linejoin="round"/>
+          </g>
+        </g>
+
+        <!-- tail sits behind everything else on the monkey -->
+        <g id="tail">
+          <path d="M118 570C52 584 8 545 12 492c5-40 44-52 61-31c13 16 0 35-15 30" fill="none" stroke="#2E1B0E" stroke-width="22" stroke-linecap="round"/>
+          <path d="M118 570C52 584 8 545 12 492c5-40 44-52 61-31c13 16 0 35-15 30" fill="none" stroke="#C2611F" stroke-width="13" stroke-linecap="round"/>
+        </g>
+
+        <!-- monkey, the part behind the table -->
+        <g id="monkeyBack">
+          <ellipse cx="185" cy="548" rx="94" ry="84" fill="#C2611F" stroke="#2E1B0E" stroke-width="5"/>
+          <path d="M150 494c-4-14 0-26 6-34M220 494c4-14 0-26-6-34" stroke="#C8432B" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M138 494q47-12 94 0l6 100H132z" fill="#FFF8EA" stroke="#2E1B0E" stroke-width="4" stroke-linejoin="round"/>
+          <rect x="160" y="530" width="50" height="34" rx="4" fill="#FFF8EA" stroke="#2E1B0E" stroke-width="3"/>
+          <path d="M160 540h50" stroke="#C8432B" stroke-width="4"/>
+
+          <circle cx="99" cy="414" r="31" fill="#C2611F" stroke="#2E1B0E" stroke-width="5"/>
+          <circle cx="101" cy="416" r="17" fill="#E9B183"/>
+          <circle cx="271" cy="414" r="31" fill="#C2611F" stroke="#2E1B0E" stroke-width="5"/>
+          <circle cx="269" cy="416" r="17" fill="#E9B183"/>
+
+          <ellipse cx="185" cy="405" rx="85" ry="77" fill="#C2611F" stroke="#2E1B0E" stroke-width="5"/>
+
+          <g fill="#2E1B0E" stroke="#2E1B0E" stroke-width="9">
+            <circle cx="161" cy="398" r="35"/>
+            <circle cx="209" cy="398" r="35"/>
+            <ellipse cx="185" cy="452" rx="57" ry="40"/>
+          </g>
+          <g fill="#F5D6A8">
+            <circle cx="161" cy="398" r="35"/>
+            <circle cx="209" cy="398" r="35"/>
+            <ellipse cx="185" cy="452" rx="57" ry="40"/>
+          </g>
+
+          <ellipse cx="134" cy="450" rx="14" ry="8" fill="#E98B5E" opacity=".5"/>
+          <ellipse cx="236" cy="450" rx="14" ry="8" fill="#E98B5E" opacity=".5"/>
+          <g fill="#B5541B">
+            <circle cx="128" cy="440" r="2"/><circle cx="137" cy="436" r="2"/><circle cx="134" cy="445" r="1.8"/>
+            <circle cx="242" cy="440" r="2"/><circle cx="233" cy="436" r="2"/><circle cx="236" cy="445" r="1.8"/>
+          </g>
+
+          <g id="eyes">
+            <ellipse cx="162" cy="396" rx="17" ry="21" fill="#FFFDF8" stroke="#2E1B0E" stroke-width="3.5"/>
+            <ellipse cx="208" cy="396" rx="17" ry="21" fill="#FFFDF8" stroke="#2E1B0E" stroke-width="3.5"/>
+            <g id="pupilL" class="pupil"><circle cx="162" cy="398" r="10" fill="#2E1B0E"/><circle cx="159" cy="394" r="3.4" fill="#FFFDF8"/></g>
+            <g id="pupilR" class="pupil"><circle cx="208" cy="398" r="10" fill="#2E1B0E"/><circle cx="205" cy="394" r="3.4" fill="#FFFDF8"/></g>
+          </g>
+          <g id="brows" fill="none" stroke="#2E1B0E" stroke-width="5" stroke-linecap="round">
+            <path d="M146 366q15-11 30-3"/>
+            <path d="M195 357q16-14 32-2"/>
+          </g>
+
+          <ellipse cx="178" cy="437" rx="3.4" ry="4.6" fill="#2E1B0E"/>
+          <ellipse cx="193" cy="437" rx="3.4" ry="4.6" fill="#2E1B0E"/>
+          <path d="M150 453q35 11 70 0q-6 41-35 42q-29-1-35-42z" fill="#5B2210" stroke="#2E1B0E" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M158 456q27 8 54 0l-2 6q-25 7-50 0z" fill="#FFFDF8"/>
+          <path d="M168 482q17-12 34 0q-7 11-17 11t-17-11z" fill="#E07A63"/>
+
+          <g id="hat">
+            <g fill="#2E1B0E" stroke="#2E1B0E" stroke-width="9" transform="rotate(-7 185 330)">
+              <circle cx="146" cy="296" r="31"/>
+              <circle cx="185" cy="276" r="41"/>
+              <circle cx="226" cy="294" r="33"/>
+              <rect x="120" y="300" width="130" height="44" rx="6"/>
+            </g>
+            <g fill="#FFFDF8" transform="rotate(-7 185 330)">
+              <circle cx="146" cy="296" r="31"/>
+              <circle cx="185" cy="276" r="41"/>
+              <circle cx="226" cy="294" r="33"/>
+              <rect x="120" y="300" width="130" height="44" rx="6"/>
+              <path d="M120 316h130" stroke="#2E1B0E" stroke-width="3" opacity=".35"/>
+              <path d="M160 288q6-16 22-20M206 290q8-8 18-6" stroke="#2E1B0E" stroke-width="3" fill="none" stroke-linecap="round" opacity=".35"/>
+            </g>
+          </g>
+        </g>
+
+        <!-- table -->
+        <g id="table">
+          <path d="M-140 588H740L780 690H-180z" fill="url(#ginghamSoft)" stroke="#2E1B0E" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M-180 690H780V800H-180z" fill="url(#gingham)" stroke="#2E1B0E" stroke-width="5"/>
+          <path d="M-180 690H780" stroke="#2E1B0E" stroke-width="5"/>
+        </g>
+
+        <!-- arms, hands, knife and fork, in front of the table -->
+        <g id="monkeyFront">
+          <path d="M118 506C92 540 86 576 100 612" fill="none" stroke="#2E1B0E" stroke-width="36" stroke-linecap="round"/>
+          <path d="M118 506C92 540 86 576 100 612" fill="none" stroke="#C2611F" stroke-width="27" stroke-linecap="round"/>
+          <path d="M252 506C280 540 290 572 282 610" fill="none" stroke="#2E1B0E" stroke-width="36" stroke-linecap="round"/>
+          <path d="M252 506C280 540 290 572 282 610" fill="none" stroke="#C2611F" stroke-width="27" stroke-linecap="round"/>
+
+          <g id="knife">
+            <path d="M96 592V520q12-6 12 18l-2 54z" fill="#EFE6D6" stroke="#2E1B0E" stroke-width="3.5" stroke-linejoin="round"/>
+            <rect x="94" y="588" width="14" height="56" rx="5" fill="#8A5A35" stroke="#2E1B0E" stroke-width="3.5"/>
+          </g>
+          <g id="fork">
+            <rect x="276" y="566" width="12" height="78" rx="5" fill="#EFE6D6" stroke="#2E1B0E" stroke-width="3.5"/>
+            <path d="M266 522v26q0 18 16 20q16-2 16-20v-26" fill="#EFE6D6" stroke="#2E1B0E" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M276 522v28M288 522v28" stroke="#2E1B0E" stroke-width="3"/>
+          </g>
+
+          <ellipse cx="101" cy="616" rx="20" ry="15" fill="#F5D6A8" stroke="#2E1B0E" stroke-width="4"/>
+          <path d="M92 610q8 4 18 0" stroke="#2E1B0E" stroke-width="2.5" fill="none" opacity=".5"/>
+          <ellipse cx="282" cy="614" rx="20" ry="15" fill="#F5D6A8" stroke="#2E1B0E" stroke-width="4"/>
+          <path d="M273 608q8 4 18 0" stroke="#2E1B0E" stroke-width="2.5" fill="none" opacity=".5"/>
+        </g>
+
+        <!-- plate -->
+        <g id="plate">
+          <ellipse cx="412" cy="652" rx="130" ry="22" fill="#2E1B0E" opacity=".13"/>
+          <ellipse cx="405" cy="640" rx="120" ry="22" fill="#FFFBF2" stroke="#2E1B0E" stroke-width="4.5"/>
+          <ellipse cx="405" cy="640" rx="88" ry="14" fill="none" stroke="#E5D3B5" stroke-width="3"/>
+        </g>
+
+        <g id="stack"></g>
+        <g id="toppings"></g>
+        <g id="fx"></g>
+      </svg>
+    </div>
+    <figcaption id="caption">The plate is empty. <span data-name>George</span> is waiting, fork up.</figcaption>
+  </figure>
+</section>
+
+<section class="story" id="story">
+  <header class="section-head">
+    <h2>The story so far</h2>
+    <p>Four short chapters. Read them out loud for best results.</p>
+  </header>
+
+  <div class="book">
+    <article class="page">
+      <h3><span class="ch">Chapter one</span>Sunday</h3>
+      <p class="dropcap">Every week, <span data-name>George</span> waits for one day. Not his birthday, not a holiday. Sunday. Sunday is pancake day, and the griddle is hot before the sun is even up.</p>
+      <p>He wears the hat. He holds the fork like a trophy. He watches the batter bubble like it owes him money.</p>
+      <span class="folio">1</span>
+    </article>
+
+    <article class="page">
+      <h3><span class="ch">Chapter two</span>Monday</h3>
+      <p class="dropcap">Then Monday shows up, the way it always does. The kitchen goes quiet. The syrup bottle is empty. And there is <span data-name>George</span>, sitting at the table with his fork up anyway.</p>
+      <p>Pancake day is over. <span data-name>George</span> is still hungry.</p>
+      <span class="folio">2</span>
+    </article>
+
+    <article class="page">
+      <h3><span class="ch">Chapter three</span>The deal</h3>
+      <p class="dropcap">So here is how it works now. There's a new coin every day, and every time somebody buys it, a fresh pancake drops onto his plate. Small buys make thin ones. Big buys make big fluffy ones.</p>
+      <p>Sells don't take any back. Nobody takes pancakes from <span data-name>George</span>.</p>
+      <span class="folio">3</span>
+    </article>
+
+    <article class="page">
+      <h3><span class="ch">Chapter four</span>How tall by Sunday?</h3>
+      <p class="dropcap">Every morning brings a new coin and a clean plate, and Sunday is the big one. Last time the stack went through the ceiling. Nobody has figured out how to make him stop, and honestly, nobody is trying.</p>
+      <p>Don't show up Monday to an empty plate.</p>
+      <span class="folio">4</span>
+    </article>
+  </div>
+
+  <ol class="week" id="week" aria-label="This week in the kitchen">
+    <li data-day="1"><b>Mon</b><i class="wk-ticker"></i><span>Sunday's over. He wants seconds.</span></li>
+    <li data-day="2"><b>Tue</b><i class="wk-ticker"></i><span>The plate is out. Feed <span data-name>George</span>.</span></li>
+    <li data-day="3"><b>Wed</b><i class="wk-ticker"></i><span>Halfway to pancake day.</span></li>
+    <li data-day="4"><b>Thu</b><i class="wk-ticker"></i><span>He can smell Sunday from here.</span></li>
+    <li data-day="5"><b>Fri</b><i class="wk-ticker"></i><span>Two more sleeps.</span></li>
+    <li data-day="6"><b>Sat</b><i class="wk-ticker"></i><span>Griddle's warming up.</span></li>
+    <li data-day="0"><b>Sun</b><i class="wk-ticker"></i><span>Pancake day. Stack up before Monday.</span></li>
+  </ol>
+</section>
+
+<section class="kitchen" id="kitchen">
+  <header class="section-head">
+    <h2>The kitchen</h2>
+    <p>Orders come straight off the chain. Each buy prints a ticket and drops a pancake.</p>
+  </header>
+
+  <div class="kitchen-grid">
+    <div class="menu">
+      <h3>Menu</h3>
+      <p class="menu-sub">One pancake per buy. Size goes by the order.</p>
+      <ul class="menu-list">
+        <li><span>Silver dollar</span><i></i><span>under 0.25 SOL</span></li>
+        <li><span>Buttermilk</span><i></i><span>0.25 to 1 SOL</span></li>
+        <li><span>Fluffy</span><i></i><span>1 to 5 SOL</span></li>
+        <li><span>The Big One</span><i></i><span>5 SOL and up</span></li>
+      </ul>
+      <p class="menu-note">Sundays come with extra syrup. Bought right here on this page? Yours lands with a little flag on it.</p>
+    </div>
+
+    <div class="tickets">
+      <div class="tickets-head">
+        <h3>Order tickets</h3>
+        <span class="live" id="liveState">connecting</span>
+      </div>
+      <ol class="ticket-list" id="tickets">
+        <li class="ticket-empty">Waiting for the next order.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <header class="section-head">
+    <h2>Place an order</h2>
+    <p>Buy today's coin, <span data-ticker>$STACK</span>, right here and watch your pancake land.</p>
+  </header>
+
+  <div class="order-grid">
+    <div class="swap" id="swap">
+      <div class="swap-off" id="swapOff">
+        <p class="swap-off-big">The kitchen opens at launch.</p>
+        <p>Once the contract is live, a swap box shows up right here. Until then, the pancakes on the plate are pretend ones so you can see how it works.</p>
+      </div>
+      <div id="jupiter-plugin" class="jup" hidden></div>
+    </div>
+
+    <div class="contract">
+      <h3>Today's contract: <span data-ticker>$STACK</span></h3>
+      <button class="ca" id="caBox" type="button" title="Copy contract">
+        <code id="caText">Posted here at launch</code>
+        <span id="caHint">copy</span>
+      </button>
+      <ul class="links" id="links"></ul>
+      <p class="fineprint">Only trust the contract shown on this page and in the official links. Anyone DMing you a different one is not George.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p><span data-name>George</span> on this site is an original cartoon made for <span data-site>Georgecoin.fun</span>. He is not affiliated with, endorsed by, or connected to any book, show, studio or brand.</p>
+  <p>Every coin on this site is a meme coin made for fun. It has no promise of value or return, and nothing here is financial advice. Only spend what you are fine losing.</p>
+  <p class="demo-note" id="demoNote" hidden>Demo kitchen: the coin is not live yet, so the orders on this page are pretend.</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
