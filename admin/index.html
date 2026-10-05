@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Owner page · Georgecoin.fun</title>
+<meta name="theme-color" content="#F8EEDC">
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="wordmark" href="../" aria-label="Open the site">
+    <img src="../img/favicon.svg" alt="" width="38" height="38">
+    <span>Owner page</span>
+  </a>
+  <nav>
+    <a class="btn btn-small btn-quiet" href="../" target="_blank" rel="noopener">View site</a>
+  </nav>
+</header>
+
+<main class="admin">
+
+  <!-- first time: connect a GitHub key -->
+  <section class="sheet" id="connect" hidden>
+    <h1>Connect once</h1>
+    <p class="sub">This page saves your changes to the site's GitHub. It needs a key from GitHub one time. The key stays in this browser only.</p>
+    <ol class="steps">
+      <li>Tap <a class="btn btn-small" id="makeKey" href="#" target="_blank" rel="noopener">Make a key</a>. GitHub opens with the name and permission filled in.</li>
+      <li>Under <b>Repository access</b>, pick <b>Only select repositories</b> and choose <b>georgecoin</b>.</li>
+      <li>Tap <b>Generate token</b>, copy it, and paste it here.</li>
+    </ol>
+    <form id="connectForm" class="row">
+      <input id="tokenInput" type="password" autocomplete="off" spellcheck="false" placeholder="Paste the key (starts with github_pat_)" aria-label="GitHub key">
+      <button class="btn" type="submit">Connect</button>
+    </form>
+    <p class="msg" id="connectMsg" role="status"></p>
+  </section>
+
+  <!-- daily coin -->
+  <section class="sheet" id="editor" hidden>
+    <div class="now" id="nowLine">Loading...</div>
+
+    <h1 id="formTitle">Today's coin</h1>
+    <p class="sub" id="formDate"></p>
+
+    <form id="coinForm" autocomplete="off">
+      <label class="field">
+        <span>Contract</span>
+        <div class="row">
+          <input id="caInput" spellcheck="false" placeholder="Paste the mint address" inputmode="text">
+          <button class="btn btn-quiet" id="pasteBtn" type="button">Paste</button>
+        </div>
+      </label>
+      <p class="found" id="found" aria-live="polite"></p>
+
+      <label class="field">
+        <span>Ticker</span>
+        <div class="ticker-wrap"><b>$</b><input id="tickerInput" spellcheck="false" placeholder="fills in from the contract" maxlength="20"></div>
+      </label>
+
+      <div class="field">
+        <span>Day</span>
+        <div class="days">
+          <button type="button" class="day-btn" data-offset="0">Today</button>
+          <button type="button" class="day-btn" data-offset="1">Tomorrow</button>
+          <input id="dateInput" type="date" aria-label="Pick a day">
+        </div>
+      </div>
+
+      <button class="btn btn-big" id="saveBtn" type="submit">Put it on the plate</button>
+      <p class="msg" id="saveMsg" role="status"></p>
+    </form>
+  </section>
+
+  <section class="sheet" id="listSheet" hidden>
+    <h2>Coins</h2>
+    <p class="sub">Tap a coin to change it. The site always shows the newest one that has a contract.</p>
+    <ul class="coins" id="coins"></ul>
+  </section>
+
+  <section class="sheet" id="linksSheet" hidden>
+    <h2>Links</h2>
+    <p class="sub">Shown under the contract on the site. Leave empty to hide.</p>
+    <form id="linksForm">
+      <label class="field"><span>X</span><input id="xInput" spellcheck="false" placeholder="https://x.com/..."></label>
+      <label class="field"><span>Telegram</span><input id="tgInput" spellcheck="false" placeholder="https://t.me/..."></label>
+      <button class="btn" type="submit">Save links</button>
+      <p class="msg" id="linksMsg" role="status"></p>
+    </form>
+  </section>
+
+  <p class="who" id="who" hidden></p>
+</main>
+
+<script src="../js/config.js"></script>
+<script src="../js/shared.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

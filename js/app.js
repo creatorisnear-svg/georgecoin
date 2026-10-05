@@ -4,45 +4,25 @@
 //   DexScreener  -> how many buys happened in the last 24 hours (the starting stack) + market stats
 //   GeckoTerminal -> the actual trades, so each new buy drops a pancake sized by its SOL amount
 //   Jupiter swap box -> buys made on this page land right away with a flag on them
-(function () {
+(async function () {
   const C = window.STACK_CONFIG || {};
+  const SH = window.StackShared;
+  // the daily coins and links come from data/site.json (saved by the owner page)
+  const DATA = (await SH.loadSiteData()) || {};
   const params = new URLSearchParams(location.search);
   const NAME = C.name || "George";
   const SITE = C.site || "Georgecoin.fun";
   const TZ = C.timezone || "America/Phoenix";
   const SOL_MINT = "So11111111111111111111111111111111111111112";
-  const DAY_KEYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  // today's date in the kitchen's time zone, so every visitor sees the same day and the same coin
-  function kitchenToday() {
-    const parts = {};
-    try {
-      new Intl.DateTimeFormat("en-US", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit", weekday: "short" })
-        .formatToParts(new Date())
-        .forEach((p) => { parts[p.type] = p.value; });
-    } catch (e) {
-      const d = new Date();
-      parts.year = String(d.getFullYear());
-      parts.month = String(d.getMonth() + 1).padStart(2, "0");
-      parts.day = String(d.getDate()).padStart(2, "0");
-      parts.weekday = DAY_KEYS[d.getDay()];
-    }
-    return {
-      iso: `${parts.year}-${parts.month}-${parts.day}`,
-      dow: DAY_KEYS.indexOf(parts.weekday),
-      y: Number(parts.year), m: Number(parts.month), d: Number(parts.day),
-    };
-  }
+  const kitchenToday = () => SH.kitchenToday(TZ);
   const TODAY = kitchenToday();
 
   // a new coin every day: the plate follows the newest launch that is live
-  const LAUNCHES = (C.launches || [])
-    .filter((l) => l && l.date && l.ticker)
-    .map((l) => ({ date: String(l.date), ticker: String(l.ticker).replace(/^\$/, ""), contract: String(l.contract || "").trim() }))
-    .sort((a, b) => (a.date < b.date ? -1 : 1));
+  const LAUNCHES = SH.normalizeLaunches(DATA.launches || C.launches);
   const current = params.get("ca")
     ? { date: TODAY.iso, ticker: params.get("ticker") || "TEST", contract: params.get("ca").trim() }
-    : [...LAUNCHES].reverse().find((l) => l.date <= TODAY.iso && l.contract) || null;
+    : SH.pickCurrent(LAUNCHES, TODAY.iso);
   const named = current || LAUNCHES.find((l) => l.date === TODAY.iso) || [...LAUNCHES].reverse().find((l) => l.date <= TODAY.iso) || LAUNCHES[0];
   const CA = current ? current.contract : "";
   const TICKER = "$" + (named ? named.ticker : "STACK");
@@ -79,10 +59,7 @@
     "It's Saturday. Pancake day is tomorrow.",
   ];
 
-  function isoPlus(days) {
-    const t = new Date(Date.UTC(TODAY.y, TODAY.m - 1, TODAY.d + days));
-    return t.toISOString().slice(0, 10);
-  }
+  const isoPlus = (days) => SH.isoPlus(TODAY, days);
 
   function setDay() {
     const d = TODAY.dow;
@@ -116,6 +93,16 @@
   setDay();
   // new day in the kitchen means a new coin: start fresh
   setInterval(() => { if (kitchenToday().iso !== TODAY.iso) location.reload(); }, 60000);
+
+  // when the owner saves a new coin, open pages switch to it on their own
+  if (!params.get("ca")) {
+    setInterval(async () => {
+      const fresh = await SH.loadSiteData();
+      if (!fresh) return;
+      const next = SH.pickCurrent(SH.normalizeLaunches(fresh.launches), kitchenToday().iso);
+      if ((next ? next.contract : "") !== CA) location.reload();
+    }, 60000);
+  }
 
   // ---------- counter and caption ----------
 
@@ -319,7 +306,7 @@
   if (CA) $("caText").textContent = CA; else $("caHint").textContent = "";
 
   (function buildLinks() {
-    const L = C.links || {};
+    const L = DATA.links || C.links || {};
     const list = [];
     if (CA && /pump$/.test(CA)) list.push(["pump.fun", `https://pump.fun/coin/${CA}`]);
     if (CA) list.push(["Chart", `https://dexscreener.com/solana/${CA}`]);

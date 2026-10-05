@@ -3,24 +3,20 @@
 George is a curious little monkey who lives for Sunday, because Sunday is pancake day.
 There's a new coin every day, and every buy of today's coin drops a pancake on his plate.
 
-Plain static site (HTML, CSS, JS). No server, no API keys. Hosted on GitHub Pages.
+Plain static site (HTML, CSS, JS). No server, no API keys. Hosted on Cloudflare Pages from this repo.
 
 ## Adding each day's coin
 
-Open `js/config.js` on GitHub, click the pencil, and add a line to `launches`:
+Go to **georgecoin.fun/admin/** (works on a phone). Paste the contract, the ticker fills itself in,
+tap **Put it on the plate**. The site switches over within a minute or two, open pages included.
 
-```js
-launches: [
-  { date: "2026-10-05", ticker: "STACK", contract: "" },
-  { date: "2026-10-06", ticker: "SECONDS", contract: "PASTE_THE_MINT_ADDRESS_HERE" },
-],
-```
+The first time, the page asks for a GitHub key (it walks you through making one). The key is
+stored in that browser only and can only change this one repo.
 
-Commit. The site updates in about a minute.
-
-- `date` is the launch day in Arizona time (`timezone` in the same file).
-- The plate follows the newest launch that has a contract. Leave `contract` empty until the coin is live.
-- While nothing is live the page runs pretend orders so it never looks dead.
+Under the hood the owner page edits `data/site.json` through the GitHub API and Cloudflare Pages
+republishes on every commit. Days roll over at midnight Arizona time (`timezone` in `js/config.js`).
+The plate follows the newest coin dated today or earlier that has a contract; with none, the page
+runs pretend orders.
 
 ## How buys become pancakes
 

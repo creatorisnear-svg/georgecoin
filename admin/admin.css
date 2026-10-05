@@ -1,0 +1,116 @@
+.top { max-width: 760px; }
+.wordmark img { display: block; }
+
+.admin { max-width: 760px; margin: 0 auto; padding: 28px 24px 64px; }
+
+.sheet {
+  margin-bottom: 26px;
+  padding: 28px 30px 30px;
+  background: var(--cream);
+  border: 2.5px solid var(--ink);
+  border-radius: 6px;
+}
+.sheet h1 { margin: 0; font-size: 42px; line-height: 1; font-weight: 900; letter-spacing: -0.02em; }
+.sheet h2 { margin: 0; font-size: 30px; font-weight: 800; }
+.sub { margin: 6px 0 22px; color: var(--ink-soft); font-style: italic; }
+
+.now {
+  margin: -6px 0 22px;
+  padding: 10px 14px;
+  border-left: 4px solid var(--leaf);
+  background: #F4F0DC;
+  font-weight: 600;
+}
+.now.off { border-left-color: var(--tomato); background: #F8E6D8; }
+
+.field { display: block; margin-bottom: 18px; }
+.field > span { display: block; margin-bottom: 6px; font-weight: 800; font-size: 17px; }
+
+.admin input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: #FFFDF6;
+  color: var(--ink);
+  font: 16px var(--mono);
+}
+.admin input:focus { outline: 3px solid var(--butter); outline-offset: 1px; }
+
+.row { display: flex; gap: 10px; align-items: stretch; }
+.row .btn { flex: none; }
+
+.ticker-wrap { display: flex; align-items: center; gap: 6px; }
+.ticker-wrap b { font-size: 26px; font-weight: 900; }
+.ticker-wrap input { font-size: 20px; font-weight: 700; text-transform: uppercase; }
+
+.found { display: flex; align-items: center; gap: 10px; min-height: 0; margin: -8px 0 16px; font-size: 16px; color: var(--ink-soft); }
+.found:empty { display: none; }
+.found img { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--ink); object-fit: cover; }
+
+.days { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.day-btn {
+  padding: 11px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: #FFFDF6;
+  color: var(--ink);
+  font: 700 16px var(--serif);
+  cursor: pointer;
+}
+.day-btn[aria-pressed="true"] { background: var(--ink); color: var(--cream); }
+.days input { width: auto; flex: 1 1 170px; }
+
+.btn-big { width: 100%; margin-top: 8px; padding: 17px 20px; font-size: 21px; }
+.btn[disabled] { opacity: .55; cursor: wait; }
+
+.msg { margin: 12px 0 0; font-weight: 700; }
+.msg:empty { display: none; }
+.msg.ok { color: var(--leaf); }
+.msg.bad { color: var(--tomato); }
+
+.steps { margin: 0 0 22px; padding-left: 22px; }
+.steps li { margin-bottom: 12px; padding-left: 4px; }
+.steps .btn { margin: 0 6px 0 2px; vertical-align: middle; }
+
+.coins { margin: 0; padding: 0; list-style: none; border-top: 1.5px solid var(--ink); }
+.coin {
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  gap: 4px 14px;
+  align-items: baseline;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--rule);
+}
+.coin-day { font-weight: 800; }
+.coin-day small { display: block; font-weight: 400; font-size: 14px; color: var(--ink-soft); }
+.coin-main b { font: 700 18px var(--mono); }
+.coin-main code { display: block; font: 13px var(--mono); color: var(--ink-soft); word-break: break-all; }
+.coin-state { font-size: 14px; font-style: italic; color: var(--ink-soft); }
+.coin.plate .coin-state { color: var(--leaf); font-weight: 700; font-style: normal; }
+.coin-actions { display: flex; gap: 8px; }
+.coin-actions button {
+  padding: 7px 11px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  background: #FFFDF6;
+  font: 700 14px var(--serif);
+  color: var(--ink);
+  cursor: pointer;
+}
+.coin-actions button.danger { color: var(--tomato); }
+.coin-actions button.armed { background: var(--tomato); color: var(--cream); }
+.coins .empty { padding: 14px 2px; font-style: italic; color: var(--ink-soft); }
+
+.who { text-align: center; font-size: 15px; color: var(--ink-soft); }
+.who button { border: 0; background: none; font: inherit; color: var(--tomato); text-decoration: underline; cursor: pointer; }
+
+@media (max-width: 760px) {
+  .admin { padding: 20px 16px 48px; }
+  .sheet { padding: 22px 18px 24px; }
+  .sheet h1 { font-size: 34px; }
+  .row { flex-direction: column; }
+  .coin { grid-template-columns: 1fr auto; }
+  .coin-day { grid-column: 1 / 3; }
+}
