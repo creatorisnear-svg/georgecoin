@@ -1,11 +1,5 @@
 {
-  "launches": [
-    {
-      "date": "2026-10-05",
-      "ticker": "PANCAKE",
-      "contract": "CebtX3Qv5hvN6mhSigADqSSEn96AkfN1yZRznY5Jpump"
-    }
-  ],
+  "launches": [],
   "links": {
     "x": "",
     "telegram": ""
